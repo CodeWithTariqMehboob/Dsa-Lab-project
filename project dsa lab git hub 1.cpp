@@ -148,3 +148,17 @@ void cancelTicket(int busId, string passengerName) {
         displayPassengers(bus);
     }
 };
+int main() {
+    BusReservationSystem system;
+    int choice;
+    do {
+        cout << "\n=== Bus Ticket Reservation System ===\n";
+        cout << "1. Add new bus\n";
+        cout << "2. Display available buses\n";
+        cout << "3. Book ticket\n";
+        cout << "4. Cancel ticket\n";
+        cout << "5. Show passenger details of a bus\n";
+        cout << "6. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+        cin.ignore(); 
