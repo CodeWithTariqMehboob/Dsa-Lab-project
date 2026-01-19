@@ -109,3 +109,42 @@ public:
 
         cout << "Ticket booked for " << passengerName << " on seat " << seat << ".\n";
     }
+void cancelTicket(int busId, string passengerName) {
+        Bus* bus = searchBus(root, busId);
+        if (bus == NULL) {
+            cout << "Bus not found.\n";
+            return;
+        }
+        Passenger* current = bus->passengers;
+        Passenger* prev = NULL;
+        bool found = false;
+
+        while (current != NULL) {
+            if (current->name == passengerName) {
+                found = true;
+                if (prev == NULL) {
+                    bus->passengers = current->next;
+                } else {
+                    prev->next = current->next;
+                }
+                bus->cancelledSeats.push(current->seatNumber);
+                delete current;
+                cout << "Ticket cancelled successfully.\n";
+                break;
+            }
+            prev = current;
+            current = current->next;
+        }
+        if (!found) {
+            cout << "Passenger not found on this bus.\n";
+        }
+    }
+    void displayPassengerDetails(int busId) {
+        Bus* bus = searchBus(root, busId);
+        if (bus == NULL) {
+            cout << "Bus not found.\n";
+            return;
+        }
+        displayPassengers(bus);
+    }
+};
