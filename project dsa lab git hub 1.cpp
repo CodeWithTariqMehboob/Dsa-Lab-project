@@ -162,3 +162,59 @@ int main() {
         cout << "Enter choice: ";
         cin >> choice;
         cin.ignore(); 
+switch (choice) {
+            case 1: {
+                int id, seats;
+                string route;
+                cout << "Bus ID: ";
+                cin >> id;
+                cin.ignore();
+                cout << "Route (e.g. Islamabad to Lahore): ";
+                getline(cin, route);
+                cout << "Total seats: ";
+                cin >> seats;
+                system.addBus(id, route, seats);
+                break;
+            }
+            case 2:
+                system.displayAvailable();
+                break;
+            case 3: {
+                int id;
+                string name;
+                cout << "Bus ID: ";
+                cin >> id;
+                cin.ignore();
+                cout << "Passenger name: ";
+                getline(cin, name);
+                system.bookTicket(id, name);
+                break;
+            }
+            case 4: {
+                int id;
+                string name;
+                cout << "Bus ID: ";
+                cin >> id;
+                cin.ignore();
+                cout << "Passenger name: ";
+                getline(cin, name);
+                system.cancelTicket(id, name);
+                break;
+            }
+            case 5: {
+                int id;
+                cout << "Bus ID: ";
+                cin >> id;
+                system.displayPassengerDetails(id);
+                break;
+            }
+            case 6:
+                cout << "Thank you! Goodbye.\n";
+                break;
+            default:
+                cout << "Invalid choice!\n";
+        }
+    } while (choice != 6);
+
+    return 0;
+}
